@@ -1,0 +1,15 @@
+service: shopping-for-seniors
+# app and org for use with dashboard.serverless.com
+app: shopping-for-seniors
+org: lukethetechsplorer
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+  actions:
+    handler: handler.actions
+    events:
+      - httpApi:
+          method: POST
+          path: /actions/{action}
