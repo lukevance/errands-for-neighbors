@@ -34,6 +34,20 @@ module.exports.getAction = actionName => {
                     }
                 }
             ];
+        case "new_request":
+            return [
+                {
+                    "say": "Please have your shopping list ready, as well as any additional instructions and your delivery address. Are you ready to place your order?"
+                },
+                {
+                    "listen": {
+                        "tasks": [
+                            "collect_order",
+                            "goodbye"
+                        ]
+                    }
+                }
+            ];
         default:
             return [
                 {"redirect": "task://confirm_order"}
