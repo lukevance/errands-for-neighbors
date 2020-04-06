@@ -1,12 +1,9 @@
-module.exports.getAction = actionName => {
+const getAction = actionName => {
     switch (actionName) {
         case "confirm_order":
             return [
                 {
                   "say": "Thank you, we will notify you when a volunteer has claimed your request."
-                },
-                {
-                  "redirect": "https://enx3kyff9qzn.x.pipedream.net/"
                 }
               ];
         case "collect_order":
@@ -52,5 +49,7 @@ module.exports.getAction = actionName => {
             return [
                 {"redirect": "task://confirm_order"}
             ];
-    }
-}
+    };
+};
+
+module.exports = {getAction};

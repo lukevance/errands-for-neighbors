@@ -5,7 +5,7 @@ org: lukethetechsplorer
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs10.x
 
 functions:
   actions:
@@ -14,3 +14,9 @@ functions:
       - httpApi:
           method: POST
           path: /actions/{action}
+  message:
+    handler: handler.message
+    events:
+      - httpApi:
+          method: POST
+          path: /message
