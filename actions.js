@@ -1,5 +1,19 @@
 const getAction = actionName => {
     switch (actionName) {
+        case "new_request":
+            return [
+                {
+                    "say": "Please have your shopping list ready, as well as any additional instructions and your delivery address. Are you ready to place your order?"
+                },
+                {
+                    "listen": {
+                        "tasks": [
+                            "collect_order",
+                            "goodbye"
+                        ]
+                    }
+                }
+            ];
         case "confirm_order":
             return [
                 {
@@ -26,28 +40,15 @@ const getAction = actionName => {
                             }
                         ],
                         "on_complete": {
-                            "redirect": "task://confirm_order"
+                            "redirect": "task://order_received_confirmation"
+                            // "redirect": "https://enyy7q22swo88ah.m.pipedream.net"
                         }
-                    }
-                }
-            ];
-        case "new_request":
-            return [
-                {
-                    "say": "Please have your shopping list ready, as well as any additional instructions and your delivery address. Are you ready to place your order?"
-                },
-                {
-                    "listen": {
-                        "tasks": [
-                            "collect_order",
-                            "goodbye"
-                        ]
                     }
                 }
             ];
         default:
             return [
-                {"redirect": "task://confirm_order"}
+                {"redirect": "task://greeting"}
             ];
     };
 };
